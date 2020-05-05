@@ -1,0 +1,767 @@
+#! /Applications/Nuke12.1v1/Nuke12.1v1.app/Contents/MacOS/libnuke-12.1.1.dylib -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="23" w="4096" h="2035" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="3433" stretch="1"/>
+            <splitter orientation="2">
+                <split size="1183"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="832"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/alexf/GitHub/CLFTestImage/CLF_testImagePrototype.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ lock_range true
+ format "2048 930 0 0 2048 930 1 render"
+ proxy_type scale
+ proxy_format "640 480 0 0 640 480 1 PC_Video"
+ colorManagement OCIO
+ defaultViewerLUT "OCIO LUTs"
+ workingSpaceLUT acescg
+ monitorLut "P3-D60/Output Transform"
+ int8Lut "Utility - sRGB - Texture"
+ int16Lut acescg
+ logLut "ACES - ACEScc"
+ floatLut acescg
+ views "left #ff0000"
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x7171c600
+ label RGB
+ note_font_size 42
+ xpos 964
+ ypos 354
+ bdwidth 292
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e8e3800
+ label CMY
+ note_font_size 42
+ xpos 1273
+ ypos 354
+ bdwidth 315
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x7171c600
+ label -RGB
+ note_font_size 42
+ xpos 1610
+ ypos 354
+ bdwidth 292
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode4
+ tile_color 0x8e8e3800
+ label -CMY
+ note_font_size 42
+ xpos 1931
+ ypos 354
+ bdwidth 315
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode5
+ tile_color 0x7171c600
+ label "nonsense - neg in one more more channels\n"
+ note_font_size 42
+ xpos 2281
+ ypos 354
+ bdwidth 1530
+ bdheight 137
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode6
+ tile_color 0x8e388e00
+ label "Trad cube"
+ note_font_size 42
+ xpos 592
+ ypos 505
+ bdwidth 179
+ bdheight 330
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode7
+ tile_color 0xaaaaaa00
+ label "full half float ramps\n"
+ note_font_size 42
+ xpos -346
+ ypos 214
+ bdwidth 616
+ bdheight 573
+}
+Reformat {
+ inputs 0
+ name Reformat1
+ xpos -336
+ ypos 294
+}
+Crop {
+ box {0 0 2048 930}
+ name Crop1
+ xpos -336
+ ypos 318
+}
+Reformat {
+ type "to box"
+ box_width 1024
+ box_height 30
+ box_fixed true
+ name Reformat2
+ xpos -336
+ ypos 342
+}
+Expression {
+ expr0 x
+ expr1 y-14
+ name Expression2
+ xpos -336
+ ypos 371
+}
+Expression {
+ channel0 rgba
+ expr0 pow(2,g)*(1+(r/1024))
+ expr1 0
+ name Expression1
+ xpos -336
+ ypos 399
+}
+Dot {
+ name Dot1
+ xpos -302
+ ypos 432
+}
+set N601a7400 [stack 0]
+Expression {
+ channel0 rgb
+ expr0 -r
+ name Expression13
+ xpos -276
+ ypos 456
+ disable true
+}
+push $N601a7400
+ContactSheet {
+ inputs 2
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 2
+ columns 1
+ roworder TopBottom
+ name ContactSheet2
+ xpos -336
+ ypos 486
+ disable true
+}
+Shuffle {
+ alpha white
+ name Shuffle8
+ label "\[value in]"
+ xpos -336
+ ypos 509
+}
+set N601a6800 [stack 0]
+Shuffle {
+ blue black
+ alpha black
+ name Shuffle5
+ label "\[value in]"
+ xpos 180
+ ypos 585
+}
+push $N601a6800
+Shuffle {
+ green black
+ alpha black
+ name Shuffle7
+ label "\[value in]"
+ xpos 92
+ ypos 585
+}
+push $N601a6800
+Shuffle {
+ red black
+ alpha black
+ name Shuffle6
+ label "\[value in]"
+ xpos 0
+ ypos 585
+}
+push $N601a6800
+Shuffle {
+ red black
+ green black
+ alpha black
+ name Shuffle3
+ label "\[value in]"
+ xpos -98
+ ypos 585
+}
+push $N601a6800
+Shuffle {
+ red black
+ blue black
+ alpha black
+ name Shuffle2
+ label "\[value in]"
+ xpos -185
+ ypos 585
+}
+push $N601a6800
+Shuffle {
+ green black
+ blue black
+ alpha black
+ name Shuffle1
+ label "\[value in]"
+ xpos -274
+ ypos 584
+}
+push $N601a6800
+ContactSheet {
+ inputs 7
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 7
+ columns 1
+ name ContactSheet1
+ xpos -336
+ ypos 730
+}
+Transform {
+ translate {0 91}
+ center {512 210}
+ shutteroffset centred
+ name Transform2
+ xpos -336
+ ypos 759
+}
+Reformat {
+ inputs 0
+ type "to box"
+ format "1024 1024 0 0 1024 1024 1 square_1k"
+ box_width 1024
+ box_height 32
+ box_fixed true
+ name Reformat11
+ label "total possible size \[expr \{\[value box_width] * \[value box_height]\}]"
+ xpos 602
+ ypos 585
+}
+Expression {
+ temp_name0 ySize
+ temp_expr0 32
+ expr0 int((y/height)*ySize)/ySize
+ expr1 (x/width*ySize)-int(x/width*ySize)
+ expr2 int((x/width)*ySize)/ySize
+ name Expression10
+ xpos 602
+ ypos 663
+}
+set N5e0a5c00 [stack 0]
+Expression {
+ channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
+ expr0 pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))
+ expr1 pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))
+ expr2 pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))
+ name zeroToOne_To_fullFloat1
+ xpos 681
+ ypos 711
+}
+push $N5e0a5c00
+ContactSheet {
+ inputs 2
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows {{inputs}}
+ columns 1
+ name ContactSheet5
+ xpos 602
+ ypos 759
+}
+Transform {
+ translate {0 {ContactSheet4.height}}
+ center {512 16}
+ shutteroffset centred
+ name Transform1
+ xpos 602
+ ypos 807
+}
+Reformat {
+ inputs 0
+ type "to box"
+ box_width 1024
+ box_height 2
+ box_fixed true
+ name Reformat9
+ xpos 819
+ ypos -161
+}
+Ramp {
+ p0 {0 0}
+ p1 {{width-1 x-1 11023} 0}
+ name Ramp2
+ xpos 819
+ ypos -117
+}
+Expression {
+ channel0 rgba
+ expr0 pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))
+ channel1 none
+ expr1 0
+ name zeroToOne_To_fullFloat
+ xpos 819
+ ypos -93
+}
+Reformat {
+ type "to box"
+ box_width 1024
+ box_height 1
+ box_fixed true
+ name Reformat12
+ xpos 819
+ ypos -53
+}
+Crop {
+ box {0 0 1024 1}
+ name Crop5
+ xpos 819
+ ypos -26
+}
+Shuffle {
+ alpha white
+ name Shuffle10
+ label "\[value in]"
+ xpos 819
+ ypos 33
+}
+set N600fb000 [stack 0]
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix25
+ label "Neg in all channels\n"
+ xpos 875
+ ypos 425
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 1}
+   }
+ name ColorMatrix24
+ xpos 3619
+ ypos 420
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix23
+ xpos 3509
+ ypos 420
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix22
+ xpos 3399
+ ypos 423
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix21
+ xpos 3227
+ ypos 428
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix20
+ xpos 3115
+ ypos 430
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix19
+ xpos 3012
+ ypos 431
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix18
+ xpos 2854
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix17
+ xpos 2758
+ ypos 431
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix16
+ xpos 2664
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix15
+ xpos 2490
+ ypos 435
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix14
+ xpos 2389
+ ypos 435
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix13
+ xpos 2295
+ ypos 437
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix12
+ xpos 2157
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix11
+ xpos 2052
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix10
+ xpos 1941
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix9
+ xpos 1818
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix8
+ xpos 1721
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 0}
+   }
+ name ColorMatrix7
+ xpos 1620
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix6
+ xpos 1166
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix5
+ xpos 1073
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 1}
+   }
+ name ColorMatrix4
+ xpos 1498
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix3
+ xpos 1393
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix2
+ xpos 1283
+ ypos 434
+}
+push $N600fb000
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 0}
+   }
+ name ColorMatrix1
+ xpos 974
+ ypos 435
+}
+push $N600fb000
+ContactSheet {
+ inputs 26
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows {{inputs}}
+ columns 1
+ name ContactSheet4
+ xpos 811
+ ypos 735
+}
+Crop {
+ box {0 0 1024 26}
+ name Crop4
+ xpos 811
+ ypos 807
+}
+Crop {
+ box {0 0 1024 90}
+ reformat true
+ name Crop3
+ xpos 811
+ ypos 841
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge1
+ xpos 811
+ ypos 891
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge2
+ xpos 811
+ ypos 927
+}
+Crop {
+ box {0 0 1024 300}
+ reformat true
+ crop false
+ name Crop6
+ xpos 811
+ ypos 968
+}
+Dot {
+ name Dot3
+ xpos 845
+ ypos 1074
+}
+set N230a7000 [stack 0]
+Shuffle {
+ alpha white
+ name Shuffle17
+ label "\[value in]"
+ xpos 484
+ ypos 1173
+}
+Blur {
+ name Blur2
+ xpos 484
+ ypos 1209
+}
+set N230a6800 [stack 0]
+push $N230a7000
+Expression {
+ expr0 abs(r)
+ expr1 abs(g)
+ expr2 abs(b)
+ name Expression29
+ xpos 377
+ ypos 1143
+}
+PositionToPoints2 {
+ inputs 2
+ display textured
+ render_mode textured
+ P_channel rgb
+ detail 1
+ pointSize 4
+ name PositionToPoints7
+ xpos 377
+ ypos 1311
+}
+push $N230a6800
+PositionToPoints2 {
+ display textured
+ render_mode textured
+ P_channel rgb
+ detail 1
+ name PositionToPoints9
+ xpos 484
+ ypos 1311
+}
+push $N230a7000
+Write {
+ file CLF_testImagePrototype.exr
+ raw true
+ file_type exr
+ first_part rgba
+ checkHashOnRead false
+ in_colorspace scene_linear
+ out_colorspace scene_linear
+ name Write1
+ xpos 811
+ ypos 1324
+}
+push $N230a7000
+Write {
+ file CLF_testImagePrototype.####.jpg
+ raw true
+ file_type jpeg
+ checkHashOnRead false
+ version 2
+ name Write2
+ xpos 950
+ ypos 1327
+}
