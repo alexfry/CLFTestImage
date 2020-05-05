@@ -3,4 +3,4 @@
 
 Mostly a discussion point at the moment.
 
-![](CLF_testImagePrototype.0001)
+![](CLF_testImagePrototype.jpg)
