@@ -1,1 +1,2 @@
-CLF_testImagePrototype.nk~
+*.nk~
+.DS_Store
