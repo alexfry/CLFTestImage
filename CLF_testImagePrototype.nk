@@ -1,38 +1,45 @@
-#! /Applications/Nuke12.1v1/Nuke12.1v1.app/Contents/MacOS/libnuke-12.1.1.dylib -nx
-version 12.1 v1
+#! /film/tools/packages/nuke/11.3.3/libnuke-11.3.3.so -nx
+version 11.3 v3
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="23" w="4096" h="2035" maximized="1" screen="0">
+    <window x="1" y="51" w="4082" h="2021" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="3433" stretch="1"/>
+            <split size="3128" stretch="1"/>
             <splitter orientation="2">
-                <split size="1183"/>
+                <split size="1158"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="832"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <split size="815"/>
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="615"/>
-            <dock id="" activePageId="Properties.1">
-                <page id="Properties.1"/>
-                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
-            </dock>
+            <split size="906"/>
+            <splitter orientation="2">
+                <split size="987"/>
+                <dock id="" activePageId="Properties.1">
+                    <page id="Properties.1"/>
+                    <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+                </dock>
+                <split size="986"/>
+                <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
+                    <page id="uk.co.thefoundry.scripteditor.1"/>
+                </dock>
+            </splitter>
         </splitter>
     </window>
 </layout>
 }
 Root {
  inputs 0
- name /Users/alexf/GitHub/CLFTestImage/CLF_testImagePrototype.nk
+ name /jobs/alfx/peter2/dev_comp/alexf/images/CLF_testimagery/CLF_testImagePrototype.nk
  project_directory "\[python \{nuke.script_directory()\}]"
  lock_range true
  format "2048 930 0 0 2048 930 1 render"
@@ -47,6 +54,16 @@ Root {
  logLut "ACES - ACEScc"
  floatLut acescg
  views "left #ff0000"
+ addUserKnob {20 Animal}
+ addUserKnob {1 show l Show}
+ show peter2
+ addUserKnob {1 scene l Scene}
+ addUserKnob {1 shot l Shot}
+ addUserKnob {1 dept l Dept}
+ addUserKnob {22 setFrameRange -STARTLINE T "import ALnuke.nark.shotrange as sr;sr.setRootFrameRangeMsg()"}
+ addUserKnob {1 user l UserOverride t "\nDO NOT SET THIS FIELD.\n\nThis field overides the current user (you) and forces some tools\nto become the user set here.\n"}
+ addUserKnob {1 mode l Mode}
+ mode comp
 }
 BackdropNode {
  inputs 0
@@ -166,7 +183,7 @@ Dot {
  xpos -302
  ypos 432
 }
-set N601a7400 [stack 0]
+set Neaabff0 [stack 0]
 Expression {
  channel0 rgb
  expr0 -r
@@ -175,7 +192,7 @@ Expression {
  ypos 456
  disable true
 }
-push $N601a7400
+push $Neaabff0
 ContactSheet {
  inputs 2
  width {{input.width*columns}}
@@ -195,7 +212,7 @@ Shuffle {
  xpos -336
  ypos 509
 }
-set N601a6800 [stack 0]
+set Nec17180 [stack 0]
 Shuffle {
  blue black
  alpha black
@@ -204,7 +221,7 @@ Shuffle {
  xpos 180
  ypos 585
 }
-push $N601a6800
+push $Nec17180
 Shuffle {
  green black
  alpha black
@@ -213,7 +230,7 @@ Shuffle {
  xpos 92
  ypos 585
 }
-push $N601a6800
+push $Nec17180
 Shuffle {
  red black
  alpha black
@@ -222,7 +239,7 @@ Shuffle {
  xpos 0
  ypos 585
 }
-push $N601a6800
+push $Nec17180
 Shuffle {
  red black
  green black
@@ -232,7 +249,7 @@ Shuffle {
  xpos -98
  ypos 585
 }
-push $N601a6800
+push $Nec17180
 Shuffle {
  red black
  blue black
@@ -242,7 +259,7 @@ Shuffle {
  xpos -185
  ypos 585
 }
-push $N601a6800
+push $Nec17180
 Shuffle {
  green black
  blue black
@@ -252,7 +269,7 @@ Shuffle {
  xpos -274
  ypos 584
 }
-push $N601a6800
+push $Nec17180
 ContactSheet {
  inputs 7
  width {{input.width*columns}}
@@ -278,32 +295,37 @@ Reformat {
  box_width 1024
  box_height 32
  box_fixed true
- name Reformat11
+ name Reformat7
  label "total possible size \[expr \{\[value box_width] * \[value box_height]\}]"
- xpos 602
- ypos 585
+ xpos 617
+ ypos 606
 }
 Expression {
- temp_name0 ySize
+ temp_name0 squareSize
  temp_expr0 32
- expr0 int((y/height)*ySize)/ySize
- expr1 (x/width*ySize)-int(x/width*ySize)
- expr2 int((x/width)*ySize)/ySize
- name Expression10
- xpos 602
- ypos 663
+ temp_name1 xSlots
+ temp_expr1 input.width/squareSize
+ temp_name2 ySlots
+ temp_expr2 input.height/squareSize
+ expr0 fmod(y,squareSize)/(squareSize-1)
+ expr1 fmod(x,squareSize)/(squareSize-1)
+ expr2 "(  int(x/squareSize)  +  int(y/squareSize)*(width/squareSize) )  / (squareSize-1)"
+ channel3 alpha
+ name CubeGenerator1
+ xpos 617
+ ypos 642
 }
-set N5e0a5c00 [stack 0]
+set Nfa25880 [stack 0]
 Expression {
  channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
  expr0 pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))
  expr1 pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))
  expr2 pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))
  name zeroToOne_To_fullFloat1
- xpos 681
- ypos 711
+ xpos 699
+ ypos 687
 }
-push $N5e0a5c00
+push $Nfa25880
 ContactSheet {
  inputs 2
  width {{input.width*columns}}
@@ -311,16 +333,16 @@ ContactSheet {
  rows {{inputs}}
  columns 1
  name ContactSheet5
- xpos 602
- ypos 759
+ xpos 620
+ ypos 735
 }
 Transform {
  translate {0 {ContactSheet4.height}}
  center {512 16}
  shutteroffset centred
  name Transform1
- xpos 602
- ypos 807
+ xpos 620
+ ypos 783
 }
 Reformat {
  inputs 0
@@ -370,7 +392,7 @@ Shuffle {
  xpos 819
  ypos 33
 }
-set N600fb000 [stack 0]
+set Nf0f15e0 [stack 0]
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -382,7 +404,7 @@ ColorMatrix {
  xpos 875
  ypos 425
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -393,7 +415,7 @@ ColorMatrix {
  xpos 3619
  ypos 420
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -404,7 +426,7 @@ ColorMatrix {
  xpos 3509
  ypos 420
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -415,7 +437,7 @@ ColorMatrix {
  xpos 3399
  ypos 423
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -426,7 +448,7 @@ ColorMatrix {
  xpos 3227
  ypos 428
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -437,7 +459,7 @@ ColorMatrix {
  xpos 3115
  ypos 430
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -448,7 +470,7 @@ ColorMatrix {
  xpos 3012
  ypos 431
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -459,7 +481,7 @@ ColorMatrix {
  xpos 2854
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -470,7 +492,7 @@ ColorMatrix {
  xpos 2758
  ypos 431
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -481,7 +503,7 @@ ColorMatrix {
  xpos 2664
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -492,7 +514,7 @@ ColorMatrix {
  xpos 2490
  ypos 435
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -503,7 +525,7 @@ ColorMatrix {
  xpos 2389
  ypos 435
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -514,7 +536,7 @@ ColorMatrix {
  xpos 2295
  ypos 437
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -525,7 +547,7 @@ ColorMatrix {
  xpos 2157
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -536,7 +558,7 @@ ColorMatrix {
  xpos 2052
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -547,7 +569,7 @@ ColorMatrix {
  xpos 1941
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -558,7 +580,7 @@ ColorMatrix {
  xpos 1818
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -569,7 +591,7 @@ ColorMatrix {
  xpos 1721
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -580,7 +602,7 @@ ColorMatrix {
  xpos 1620
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -591,7 +613,7 @@ ColorMatrix {
  xpos 1166
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -602,7 +624,7 @@ ColorMatrix {
  xpos 1073
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -613,7 +635,7 @@ ColorMatrix {
  xpos 1498
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -624,7 +646,7 @@ ColorMatrix {
  xpos 1393
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -635,7 +657,7 @@ ColorMatrix {
  xpos 1283
  ypos 434
 }
-push $N600fb000
+push $Nf0f15e0
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -646,7 +668,7 @@ ColorMatrix {
  xpos 974
  ypos 435
 }
-push $N600fb000
+push $Nf0f15e0
 ContactSheet {
  inputs 26
  width {{input.width*columns}}
@@ -697,7 +719,7 @@ Dot {
  xpos 845
  ypos 1074
 }
-set N230a7000 [stack 0]
+set Ne877fe0 [stack 0]
 Shuffle {
  alpha white
  name Shuffle17
@@ -710,8 +732,8 @@ Blur {
  xpos 484
  ypos 1209
 }
-set N230a6800 [stack 0]
-push $N230a7000
+set Nf18b100 [stack 0]
+push $Ne877fe0
 Expression {
  expr0 abs(r)
  expr1 abs(g)
@@ -731,7 +753,7 @@ PositionToPoints2 {
  xpos 377
  ypos 1311
 }
-push $N230a6800
+push $Nf18b100
 PositionToPoints2 {
  display textured
  render_mode textured
@@ -741,7 +763,7 @@ PositionToPoints2 {
  xpos 484
  ypos 1311
 }
-push $N230a7000
+push $Ne877fe0
 Write {
  file CLF_testImagePrototype.exr
  raw true
@@ -753,15 +775,32 @@ Write {
  name Write1
  xpos 811
  ypos 1324
+ addUserKnob {20 caravr l CaraVR}
+ addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
+ addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
 }
-push $N230a7000
+push $Ne877fe0
 Write {
  file CLF_testImagePrototype.####.jpg
  raw true
  file_type jpeg
  checkHashOnRead false
  version 2
+ in_colorspace acescg
+ out_colorspace acescg
  name Write2
  xpos 950
  ypos 1327
+ addUserKnob {20 caravr l CaraVR}
+ addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
+ addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
+}
+push $Ne877fe0
+Viewer {
+ frame_range 1-100
+ colour_sample_bbox {0.9453125 -0.015625 0.947265625 -0.013671875}
+ viewerProcess "Raw (P3-D60)"
+ name Viewer1
+ xpos 818
+ ypos 993
 }
