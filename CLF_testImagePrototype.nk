@@ -1,69 +1,51 @@
-#! /film/tools/packages/nuke/11.3.3/libnuke-11.3.3.so -nx
-version 11.3 v3
+#! /Applications/Nuke12.1v1/Nuke12.1v1.app/Contents/MacOS/libnuke-12.1.1.dylib -nx
+version 12.1 v1
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="1" y="51" w="4082" h="2021" screen="0">
+    <window x="0" y="23" w="4096" h="2035" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="3128" stretch="1"/>
+            <split size="3433" stretch="1"/>
             <splitter orientation="2">
-                <split size="1158"/>
+                <split size="1500"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="815"/>
-                <dock id="" activePageId="DAG.1">
+                <split size="515"/>
+                <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
                 </dock>
             </splitter>
-            <split size="906"/>
-            <splitter orientation="2">
-                <split size="987"/>
-                <dock id="" activePageId="Properties.1">
-                    <page id="Properties.1"/>
-                    <page id="uk.co.thefoundry.backgroundrenderview.1"/>
-                </dock>
-                <split size="986"/>
-                <dock id="" activePageId="uk.co.thefoundry.scripteditor.1">
-                    <page id="uk.co.thefoundry.scripteditor.1"/>
-                </dock>
-            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
         </splitter>
     </window>
 </layout>
 }
 Root {
  inputs 0
- name /jobs/alfx/peter2/dev_comp/alexf/images/CLF_testimagery/CLF_testImagePrototype.nk
+ name /Users/alexf/GitHub/CLFTestImage/CLF_testImagePrototype.nk
  project_directory "\[python \{nuke.script_directory()\}]"
  lock_range true
  format "2048 930 0 0 2048 930 1 render"
  proxy_type scale
  proxy_format "640 480 0 0 640 480 1 PC_Video"
- colorManagement OCIO
- defaultViewerLUT "OCIO LUTs"
- workingSpaceLUT acescg
- monitorLut "P3-D60/Output Transform"
- int8Lut "Utility - sRGB - Texture"
- int16Lut acescg
- logLut "ACES - ACEScc"
- floatLut acescg
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
  views "left #ff0000"
- addUserKnob {20 Animal}
- addUserKnob {1 show l Show}
- show peter2
- addUserKnob {1 scene l Scene}
- addUserKnob {1 shot l Shot}
- addUserKnob {1 dept l Dept}
- addUserKnob {22 setFrameRange -STARTLINE T "import ALnuke.nark.shotrange as sr;sr.setRootFrameRangeMsg()"}
- addUserKnob {1 user l UserOverride t "\nDO NOT SET THIS FIELD.\n\nThis field overides the current user (you) and forces some tools\nto become the user set here.\n"}
- addUserKnob {1 mode l Mode}
- mode comp
 }
 BackdropNode {
  inputs 0
@@ -75,6 +57,39 @@ BackdropNode {
  ypos 354
  bdwidth 292
  bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode10
+ tile_color 0x7171c600
+ label -RGB
+ note_font_size 42
+ xpos -2900
+ ypos 438
+ bdwidth 292
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode11
+ tile_color 0x8e8e3800
+ label -CMY
+ note_font_size 42
+ xpos -2579
+ ypos 438
+ bdwidth 315
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode12
+ tile_color 0x7171c600
+ label "nonsense - neg in one more more channels\n"
+ note_font_size 42
+ xpos -2229
+ ypos 438
+ bdwidth 1530
+ bdheight 137
 }
 BackdropNode {
  inputs 0
@@ -126,8 +141,8 @@ BackdropNode {
  tile_color 0x8e388e00
  label "Trad cube"
  note_font_size 42
- xpos 592
- ypos 505
+ xpos 517
+ ypos 379
  bdwidth 179
  bdheight 330
 }
@@ -142,18 +157,41 @@ BackdropNode {
  bdwidth 616
  bdheight 573
 }
+BackdropNode {
+ inputs 0
+ name BackdropNode8
+ tile_color 0x7171c600
+ label RGB
+ note_font_size 42
+ xpos -3546
+ ypos 438
+ bdwidth 292
+ bdheight 108
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode9
+ tile_color 0x8e8e3800
+ label CMY
+ note_font_size 42
+ xpos -3237
+ ypos 438
+ bdwidth 315
+ bdheight 108
+}
 Reformat {
  inputs 0
  name Reformat1
  xpos -336
- ypos 294
+ ypos 241
 }
 Crop {
  box {0 0 2048 930}
  name Crop1
  xpos -336
- ypos 318
+ ypos 265
 }
+set N6bea7800 [stack 0]
 Reformat {
  type "to box"
  box_width 1024
@@ -161,14 +199,14 @@ Reformat {
  box_fixed true
  name Reformat2
  xpos -336
- ypos 342
+ ypos 303
 }
 Expression {
  expr0 x
  expr1 y-14
  name Expression2
  xpos -336
- ypos 371
+ ypos 329
 }
 Expression {
  channel0 rgba
@@ -176,117 +214,111 @@ Expression {
  expr1 0
  name Expression1
  xpos -336
- ypos 399
+ ypos 366
 }
-Dot {
- name Dot1
- xpos -302
- ypos 432
+Axis2 {
+ inputs 0
+ rotate {10 9 70}
+ name Axis1
+ xpos -3892
+ ypos 742
+ addUserKnob {20 ALCheckin t "Checkin Management"}
+ addUserKnob {1 computedLpath l cLpath t "Computed lpath"}
+ computedLpath /JOB(peter2)/SCENE()/SHOT()/ASSETDIR(assets)/LIBRARY(fragment)/FRAGTYPE(elementscript)/DOMAIN(comp)/FRAGMENT()/TECHVAR(base)/ASSET(data)
+ addUserKnob {1 userLpath l uLpath t "User lpath: this overrides cLpath"}
+ addUserKnob {6 exemptFromCheckin t "Exempts this node from checkin. Not user selectable." -STARTLINE +DISABLED}
 }
-set Neaabff0 [stack 0]
 Expression {
- channel0 rgb
- expr0 -r
- name Expression13
- xpos -276
- ypos 456
- disable true
+ inputs 0
+ channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
+ expr0 "r>0 ? pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))  :  -(pow(2,int(-r/(1/30))-14)*(1+(((-r/(1/30))-int(-r/(1/30)))*1023/1024)))"
+ expr1 "\ng>0 ? pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))  :  -(pow(2,int(-g/(1/30))-14)*(1+(((-g/(1/30))-int(-g/(1/30)))*1023/1024)))"
+ expr2 "\nb>0 ? pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))  :  -(pow(2,int(-b/(1/30))-14)*(1+(((-b/(1/30))-int(-b/(1/30)))*1023/1024)))"
+ name zeroToOne_To_fullFloat2
+ xpos 290
+ ypos 492
 }
-push $Neaabff0
-ContactSheet {
- inputs 2
- width {{input.width*columns}}
- height {{input.height*rows}}
- rows 2
- columns 1
- roworder TopBottom
- name ContactSheet2
- xpos -336
- ypos 486
- disable true
+Reformat {
+ inputs 0
+ type "to box"
+ format "1024 1024 0 0 1024 1024 1 square_1k"
+ box_width 256
+ box_height 1024
+ box_fixed true
+ name Reformat6
+ label "total possible size \[expr \{\[value box_width] * \[value box_height]\}]"
+ xpos 418
+ ypos 417
 }
+Expression {
+ temp_name0 squareSize
+ temp_expr0 64
+ temp_name1 xSlots
+ temp_expr1 input.width/squareSize
+ temp_name2 ySlots
+ temp_expr2 input.height/squareSize
+ expr0 fmod(y,squareSize)/(squareSize-1)
+ expr1 fmod(x,squareSize)/(squareSize-1)
+ expr2 "(  int(x/squareSize)  +  int(y/squareSize)*(width/squareSize) )  / (squareSize-1)"
+ channel3 alpha
+ name CubeGenerator2
+ xpos 418
+ ypos 459
+}
+Multiply {
+ value 2
+ name Multiply1
+ xpos 418
+ ypos 483
+}
+Add {
+ value -1
+ name Add1
+ xpos 418
+ ypos 519
+}
+set N7b426800 [stack 0]
+Expression {
+ channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
+ expr0 "  r>0 ? pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))  :  -(pow(2,int(-r/(1/30))-14)*(1+(((-r/(1/30))-int(-r/(1/30)))*1023/1024)))"
+ expr1 "\ng>0 ? pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))  :  -(pow(2,int(-g/(1/30))-14)*(1+(((-g/(1/30))-int(-g/(1/30)))*1023/1024)))"
+ expr2 "\nb>0 ? pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))  :  -(pow(2,int(-b/(1/30))-14)*(1+(((-b/(1/30))-int(-b/(1/30)))*1023/1024)))"
+ name zeroToOne_To_fullFloat4
+ xpos 465
+ ypos 573
+}
+set N7b426400 [stack 0]
+push $N7b426400
 Shuffle {
+ red white
+ green white
+ blue white
  alpha white
- name Shuffle8
+ name Shuffle9
  label "\[value in]"
- xpos -336
- ypos 509
-}
-set Nec17180 [stack 0]
-Shuffle {
- blue black
- alpha black
- name Shuffle5
- label "\[value in]"
- xpos 180
+ xpos 290
  ypos 585
 }
-push $Nec17180
-Shuffle {
- green black
- alpha black
- name Shuffle7
- label "\[value in]"
- xpos 92
- ypos 585
+PositionToPoints2 {
+ inputs 2
+ display textured
+ render_mode textured
+ P_channel rgb
+ detail 1
+ pointSize 1
+ name PositionToPoints3
+ xpos 297
+ ypos 644
 }
-push $Nec17180
-Shuffle {
- red black
- alpha black
- name Shuffle6
- label "\[value in]"
- xpos 0
- ypos 585
-}
-push $Nec17180
-Shuffle {
- red black
- green black
- alpha black
- name Shuffle3
- label "\[value in]"
- xpos -98
- ypos 585
-}
-push $Nec17180
-Shuffle {
- red black
- blue black
- alpha black
- name Shuffle2
- label "\[value in]"
- xpos -185
- ypos 585
-}
-push $Nec17180
-Shuffle {
- green black
- blue black
- alpha black
- name Shuffle1
- label "\[value in]"
- xpos -274
- ypos 584
-}
-push $Nec17180
-ContactSheet {
- inputs 7
- width {{input.width*columns}}
- height {{input.height*rows}}
- rows 7
- columns 1
- name ContactSheet1
- xpos -336
- ypos 730
-}
-Transform {
- translate {0 91}
- center {512 210}
- shutteroffset centred
- name Transform2
- xpos -336
- ypos 759
+push $N7b426800
+Expression {
+ channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
+ expr0 pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))
+ expr1 pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))
+ expr2 pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))
+ name zeroToOne_To_fullFloat3
+ xpos 306
+ ypos 413
 }
 Reformat {
  inputs 0
@@ -297,8 +329,8 @@ Reformat {
  box_fixed true
  name Reformat7
  label "total possible size \[expr \{\[value box_width] * \[value box_height]\}]"
- xpos 617
- ypos 606
+ xpos 545
+ ypos 438
 }
 Expression {
  temp_name0 squareSize
@@ -312,20 +344,20 @@ Expression {
  expr2 "(  int(x/squareSize)  +  int(y/squareSize)*(width/squareSize) )  / (squareSize-1)"
  channel3 alpha
  name CubeGenerator1
- xpos 617
- ypos 642
+ xpos 545
+ ypos 474
 }
-set Nfa25880 [stack 0]
+set N6c0ee400 [stack 0]
 Expression {
  channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
  expr0 pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))
  expr1 pow(2,int(g/(1/30))-14)*(1+(((g/(1/30))-int(g/(1/30)))*1023/1024))
  expr2 pow(2,int(b/(1/30))-14)*(1+(((b/(1/30))-int(b/(1/30)))*1023/1024))
  name zeroToOne_To_fullFloat1
- xpos 699
- ypos 687
+ xpos 625
+ ypos 522
 }
-push $Nfa25880
+push $N6c0ee400
 ContactSheet {
  inputs 2
  width {{input.width*columns}}
@@ -333,16 +365,39 @@ ContactSheet {
  rows {{inputs}}
  columns 1
  name ContactSheet5
- xpos 620
- ypos 735
+ xpos 545
+ ypos 567
 }
+PositionToPoints2 {
+ display textured
+ render_mode textured
+ P_channel rgb
+ detail 1
+ pointSize 1
+ name PositionToPoints2
+ xpos 684
+ ypos 639
+}
+push $N7b426400
+push $N7b426800
+ContactSheet {
+ inputs 2
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 1
+ columns 2
+ name ContactSheet6
+ xpos 418
+ ypos 639
+}
+set N7b426000 [stack 0]
 Transform {
  translate {0 {ContactSheet4.height}}
  center {512 16}
  shutteroffset centred
  name Transform1
- xpos 620
- ypos 783
+ xpos 576
+ ypos 799
 }
 Reformat {
  inputs 0
@@ -377,13 +432,13 @@ Reformat {
  box_fixed true
  name Reformat12
  xpos 819
- ypos -53
+ ypos -52
 }
 Crop {
  box {0 0 1024 1}
  name Crop5
  xpos 819
- ypos -26
+ ypos -25
 }
 Shuffle {
  alpha white
@@ -392,7 +447,7 @@ Shuffle {
  xpos 819
  ypos 33
 }
-set Nf0f15e0 [stack 0]
+set N7b12b000 [stack 0]
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -404,7 +459,7 @@ ColorMatrix {
  xpos 875
  ypos 425
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -415,7 +470,7 @@ ColorMatrix {
  xpos 3619
  ypos 420
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -426,7 +481,7 @@ ColorMatrix {
  xpos 3509
  ypos 420
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -437,7 +492,7 @@ ColorMatrix {
  xpos 3399
  ypos 423
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -448,7 +503,7 @@ ColorMatrix {
  xpos 3227
  ypos 428
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -459,7 +514,7 @@ ColorMatrix {
  xpos 3115
  ypos 430
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -470,7 +525,7 @@ ColorMatrix {
  xpos 3012
  ypos 431
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -481,7 +536,7 @@ ColorMatrix {
  xpos 2854
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -492,7 +547,7 @@ ColorMatrix {
  xpos 2758
  ypos 431
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -503,7 +558,7 @@ ColorMatrix {
  xpos 2664
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -514,7 +569,7 @@ ColorMatrix {
  xpos 2490
  ypos 435
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -525,7 +580,7 @@ ColorMatrix {
  xpos 2389
  ypos 435
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -536,7 +591,7 @@ ColorMatrix {
  xpos 2295
  ypos 437
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -547,7 +602,7 @@ ColorMatrix {
  xpos 2157
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -558,7 +613,7 @@ ColorMatrix {
  xpos 2052
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -569,7 +624,7 @@ ColorMatrix {
  xpos 1941
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -580,7 +635,7 @@ ColorMatrix {
  xpos 1818
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -591,7 +646,7 @@ ColorMatrix {
  xpos 1721
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -602,7 +657,7 @@ ColorMatrix {
  xpos 1620
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -613,7 +668,7 @@ ColorMatrix {
  xpos 1166
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -624,7 +679,7 @@ ColorMatrix {
  xpos 1073
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -635,7 +690,7 @@ ColorMatrix {
  xpos 1498
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -646,7 +701,7 @@ ColorMatrix {
  xpos 1393
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -657,7 +712,7 @@ ColorMatrix {
  xpos 1283
  ypos 434
 }
-push $Nf0f15e0
+push $N7b12b000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -668,7 +723,7 @@ ColorMatrix {
  xpos 974
  ypos 435
 }
-push $Nf0f15e0
+push $N7b12b000
 ContactSheet {
  inputs 26
  width {{input.width*columns}}
@@ -676,7 +731,7 @@ ContactSheet {
  rows {{inputs}}
  columns 1
  name ContactSheet4
- xpos 811
+ xpos 809
  ypos 735
 }
 Crop {
@@ -685,122 +740,1001 @@ Crop {
  xpos 811
  ypos 807
 }
+set N6b6f4400 [stack 0]
 Crop {
  box {0 0 1024 90}
  reformat true
  name Crop3
- xpos 811
- ypos 841
+ xpos 761
+ ypos 845
 }
 Merge2 {
  inputs 2
  metainput All
  name Merge1
- xpos 811
- ypos 891
+ xpos 761
+ ypos 903
 }
+push $N6bea7800
+Reformat {
+ type "to box"
+ box_width 1024
+ box_height 31
+ box_fixed true
+ name Reformat3
+ xpos -217
+ ypos 303
+}
+Expression {
+ expr0 x
+ expr1 y==0?-14:y-15
+ expr2 y!=0
+ name Expression4
+ xpos -216
+ ypos 327
+}
+Expression {
+ channel0 rgba
+ expr0 pow(2,g)*(b+(r/1024))
+ expr1 0
+ name Expression3
+ xpos -216
+ ypos 351
+}
+Dot {
+ name Dot1
+ xpos -302
+ ypos 432
+}
+set N3f1a9400 [stack 0]
+Expression {
+ channel0 rgb
+ expr0 -r
+ name Expression13
+ xpos -276
+ ypos 456
+ disable true
+}
+push $N3f1a9400
+ContactSheet {
+ inputs 2
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 2
+ columns 1
+ roworder TopBottom
+ name ContactSheet2
+ xpos -336
+ ypos 486
+ disable true
+}
+Shuffle {
+ alpha white
+ name Shuffle8
+ label "\[value in]"
+ xpos -336
+ ypos 509
+}
+set N3f1a8800 [stack 0]
+Shuffle {
+ blue black
+ alpha black
+ name Shuffle5
+ label "\[value in]"
+ xpos 180
+ ypos 585
+}
+push $N3f1a8800
+Shuffle {
+ green black
+ alpha black
+ name Shuffle7
+ label "\[value in]"
+ xpos 92
+ ypos 585
+}
+push $N3f1a8800
+Shuffle {
+ red black
+ alpha black
+ name Shuffle6
+ label "\[value in]"
+ xpos 0
+ ypos 585
+}
+push $N3f1a8800
+Shuffle {
+ red black
+ green black
+ alpha black
+ name Shuffle3
+ label "\[value in]"
+ xpos -98
+ ypos 585
+}
+push $N3f1a8800
+Shuffle {
+ red black
+ blue black
+ alpha black
+ name Shuffle2
+ label "\[value in]"
+ xpos -185
+ ypos 585
+}
+push $N3f1a8800
+Shuffle {
+ green black
+ blue black
+ alpha black
+ name Shuffle1
+ label "\[value in]"
+ xpos -274
+ ypos 584
+}
+push $N3f1a8800
+ContactSheet {
+ inputs 7
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 7
+ columns 1
+ name ContactSheet1
+ xpos -336
+ ypos 735
+}
+Transform {
+ translate {0 91}
+ center {512 210}
+ shutteroffset centred
+ name Transform2
+ xpos -336
+ ypos 759
+}
+Reformat {
+ inputs 0
+ type "to box"
+ box_width 32
+ box_height 32
+ box_fixed true
+ name Reformat11
+ xpos 2788
+ ypos 886
+}
+Crop {
+ box {0 0 32 32}
+ crop false
+ name Crop8
+ xpos 2788
+ ypos 910
+}
+Shuffle {
+ red white
+ green white
+ blue white
+ alpha white
+ name Shuffle30
+ label "\[value in]"
+ xpos 2792
+ ypos 934
+}
+set N1c566400 [stack 0]
+Expression {
+ channel0 rgba
+ expr0 65504
+ name Expression14
+ xpos 3875
+ ypos 1023
+}
+push $N1c566400
+Expression {
+ channel0 rgb
+ expr0 0
+ name Expression12
+ xpos 3776
+ ypos 1023
+}
+push $N1c566400
+Expression {
+ channel0 rgb
+ expr0 nan
+ name Expression11
+ xpos 3680
+ ypos 1023
+}
+push $N1c566400
+Expression {
+ channel0 rgb
+ expr0 -inf
+ name Expression10
+ xpos 3568
+ ypos 1023
+}
+push $N1c566400
+Expression {
+ channel0 rgb
+ expr0 inf
+ name Expression9
+ xpos 3462
+ ypos 1023
+}
+push $N1c566400
+Shuffle {
+ blue black
+ alpha white
+ name Shuffle24
+ label "\[value in]"
+ xpos 3345
+ ypos 1013
+}
+push $N1c566400
+Shuffle {
+ green black
+ alpha white
+ name Shuffle25
+ label "\[value in]"
+ xpos 3235
+ ypos 1010
+}
+push $N1c566400
+Shuffle {
+ red black
+ alpha white
+ name Shuffle26
+ label "\[value in]"
+ xpos 3138
+ ypos 1007
+}
+push $N1c566400
+Shuffle {
+ red black
+ green black
+ alpha white
+ name Shuffle27
+ label "\[value in]"
+ xpos 3040
+ ypos 1006
+}
+push $N1c566400
+Shuffle {
+ red black
+ blue black
+ alpha white
+ name Shuffle28
+ label "\[value in]"
+ xpos 2952
+ ypos 1006
+}
+push $N1c566400
+Shuffle {
+ green black
+ blue black
+ alpha white
+ name Shuffle29
+ label "\[value in]"
+ xpos 2864
+ ypos 1005
+}
+push $N1c566400
+ContactSheet {
+ inputs 12
+ width {{(input.width*columns)+(gap*(columns+1))}}
+ height {{(input.height*rows)+(gap*(rows+1))}}
+ rows 1
+ columns 12
+ gap 6
+ name ContactSheet10
+ xpos 2792
+ ypos 1178
+}
+set N6ecb1400 [stack 0]
+push $N6ecb1400
+Expression {
+ channel0 rgb
+ expr0 .18
+ name Expression15
+ xpos 2960
+ ypos 1202
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge6
+ xpos 2792
+ ypos 1263
+}
+Transform {
+ translate {0 832}
+ center {231 22}
+ shutteroffset centred
+ name Transform7
+ xpos 2792
+ ypos 1287
+}
+Reformat {
+ inputs 0
+ type "to box"
+ box_width 32
+ box_height 33
+ box_fixed true
+ name Reformat10
+ xpos 2064
+ ypos 879
+}
+Expression {
+ expr0 .18
+ expr1 .18
+ expr2 .18
+ name Expression8
+ xpos 2064
+ ypos 903
+}
+EXPTool {
+ mode Stops
+ gang false
+ red {{frame}}
+ green {{red}}
+ blue {{red}}
+ name Exposure1
+ xpos 2064
+ ypos 927
+}
+Crop {
+ box {0 0 33 33}
+ name Crop7
+ xpos 2064
+ ypos 951
+}
+ContactSheet {
+ width 33
+ height 1024
+ rows 31
+ columns 1
+ splitinputs true
+ startframe -15
+ endframe 15
+ name ContactSheet8
+ xpos 2064
+ ypos 975
+}
+Dot {
+ name Dot4
+ xpos 2098
+ ypos 999
+}
+set N7b42cc00 [stack 0]
+Shuffle {
+ blue black
+ alpha black
+ name Shuffle18
+ label "\[value in]"
+ xpos 2570
+ ypos 1057
+}
+push $N7b42cc00
+Shuffle {
+ green black
+ alpha black
+ name Shuffle19
+ label "\[value in]"
+ xpos 2482
+ ypos 1057
+}
+push $N7b42cc00
+Shuffle {
+ red black
+ alpha black
+ name Shuffle20
+ label "\[value in]"
+ xpos 2390
+ ypos 1057
+}
+push $N7b42cc00
+Shuffle {
+ red black
+ green black
+ alpha black
+ name Shuffle21
+ label "\[value in]"
+ xpos 2292
+ ypos 1057
+}
+push $N7b42cc00
+Shuffle {
+ red black
+ blue black
+ alpha black
+ name Shuffle22
+ label "\[value in]"
+ xpos 2205
+ ypos 1057
+}
+push $N7b42cc00
+Shuffle {
+ green black
+ blue black
+ alpha black
+ name Shuffle23
+ label "\[value in]"
+ xpos 2116
+ ypos 1056
+}
+push $N7b42cc00
+ContactSheet {
+ inputs 7
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 1
+ columns 7
+ name ContactSheet9
+ xpos 2064
+ ypos 1134
+}
+Transform {
+ translate {1760 0}
+ center {112 512}
+ shutteroffset centred
+ name Transform6
+ xpos 2064
+ ypos 1158
+}
+Reformat {
+ inputs 0
+ type "to box"
+ box_width 32
+ box_height 1024
+ box_fixed true
+ name Reformat8
+ xpos 1249
+ ypos 879
+}
+Expression {
+ channel0 rgba
+ expr0 y/height
+ name Expression7
+ xpos 1249
+ ypos 912
+}
+Dot {
+ name Dot2
+ xpos 1283
+ ypos 936
+}
+set N7b4e3c00 [stack 0]
+Shuffle {
+ blue black
+ alpha black
+ name Shuffle16
+ label "\[value in]"
+ xpos 1755
+ ypos 994
+}
+push $N7b4e3c00
+Shuffle {
+ green black
+ alpha black
+ name Shuffle15
+ label "\[value in]"
+ xpos 1667
+ ypos 994
+}
+push $N7b4e3c00
+Shuffle {
+ red black
+ alpha black
+ name Shuffle11
+ label "\[value in]"
+ xpos 1575
+ ypos 994
+}
+push $N7b4e3c00
+Shuffle {
+ red black
+ green black
+ alpha black
+ name Shuffle12
+ label "\[value in]"
+ xpos 1477
+ ypos 994
+}
+push $N7b4e3c00
+Shuffle {
+ red black
+ blue black
+ alpha black
+ name Shuffle13
+ label "\[value in]"
+ xpos 1390
+ ypos 994
+}
+push $N7b4e3c00
+Shuffle {
+ green black
+ blue black
+ alpha black
+ name Shuffle14
+ label "\[value in]"
+ xpos 1301
+ ypos 993
+}
+push $N7b4e3c00
+ContactSheet {
+ inputs 7
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows 1
+ columns 7
+ name ContactSheet7
+ xpos 1249
+ ypos 1071
+}
+Transform {
+ translate {1536 0}
+ center {112 512}
+ shutteroffset centred
+ name Transform5
+ xpos 1249
+ ypos 1095
+}
+push $N7b426000
+Transform {
+ translate {1024 0}
+ center {256 512}
+ shutteroffset centred
+ name Transform4
+ xpos 474
+ ypos 882
+}
+Reformat {
+ inputs 0
+ name Reformat4
+ xpos -3691
+ ypos -78
+}
+Crop {
+ box {0 0 2048 930}
+ name Crop2
+ xpos -3691
+ ypos -54
+}
+Reformat {
+ type "to box"
+ box_width 1024
+ box_height 31
+ box_fixed true
+ name Reformat5
+ xpos -3691
+}
+Expression {
+ expr0 x
+ expr1 y==0?-14:y-15
+ expr2 y!=0
+ name Expression5
+ xpos -3690
+ ypos 24
+}
+Expression {
+ channel0 rgba
+ expr0 pow(2,g)*(b+(r/1024))
+ expr1 0
+ name Expression6
+ xpos -3690
+ ypos 48
+}
+Shuffle {
+ alpha white
+ name Shuffle4
+ label "\[value in]"
+ xpos -3690
+ ypos 115
+}
+set N6b0bfc00 [stack 0]
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 1}
+   }
+ name ColorMatrix27
+ xpos -891
+ ypos 504
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix28
+ xpos -1001
+ ypos 504
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix29
+ xpos -1111
+ ypos 507
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix30
+ xpos -1283
+ ypos 512
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 1}
+   }
+ name ColorMatrix31
+ xpos -1395
+ ypos 514
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix32
+ xpos -1498
+ ypos 515
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix33
+ xpos -1656
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix34
+ xpos -1752
+ ypos 515
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix35
+ xpos -1846
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix36
+ xpos -2020
+ ypos 519
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix37
+ xpos -2121
+ ypos 519
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix38
+ xpos -2215
+ ypos 521
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix39
+ xpos -2353
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix40
+ xpos -2458
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix41
+ xpos -2569
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 0 0}
+     {0 0 -1}
+   }
+ name ColorMatrix42
+ xpos -2692
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 -1 0}
+     {0 0 0}
+   }
+ name ColorMatrix43
+ xpos -2789
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 0 0}
+     {0 0 0}
+   }
+ name ColorMatrix44
+ xpos -2890
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 1}
+   }
+ name ColorMatrix47
+ xpos -3012
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix48
+ xpos -3117
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix49
+ xpos -3227
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 0 0}
+     {0 0 1}
+   }
+ name ColorMatrix45
+ xpos -3344
+ ypos 519
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {0 0 0}
+     {0 1 0}
+     {0 0 0}
+   }
+ name ColorMatrix46
+ xpos -3436
+ ypos 518
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {1 0 0}
+     {0 0 0}
+     {0 0 0}
+   }
+ name ColorMatrix50
+ xpos -3535
+ ypos 519
+}
+push $N6b0bfc00
+ColorMatrix {
+ matrix {
+     {-1 0 0}
+     {0 -1 0}
+     {0 0 -1}
+   }
+ name ColorMatrix26
+ label "Neg in all channels\n"
+ xpos -3632
+ ypos 510
+}
+push $N6b0bfc00
+ContactSheet {
+ inputs 26
+ width {{input.width*columns}}
+ height {{input.height*rows}}
+ rows {{inputs}}
+ columns 1
+ name ContactSheet3
+ xpos -3690
+ ypos 855
+}
+Transform {
+ translate {0 {ContactSheet4.height}}
+ center {512 16}
+ shutteroffset centred
+ name Transform3
+ xpos -3690
+ ypos 879
+}
+set N7b15d000 [stack 0]
+push $N6b6f4400
 Merge2 {
  inputs 2
  metainput All
  name Merge2
  xpos 811
- ypos 927
+ ypos 999
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge3
+ xpos 811
+ ypos 1071
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge4
+ xpos 811
+ ypos 1119
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge5
+ xpos 811
+ ypos 1159
+}
+Merge2 {
+ inputs 2
+ metainput All
+ name Merge7
+ xpos 808
+ ypos 1239
 }
 Crop {
- box {0 0 1024 300}
+ box {0 0 1991 1024}
  reformat true
  crop false
  name Crop6
- xpos 811
- ypos 968
+ xpos 808
+ ypos 1263
 }
+set N7b2b0c00 [stack 0]
+push $N7b2b0c00
+Viewer {
+ inputs 2
+ frame_range 1-100
+ colour_sample_bbox {-0.8603716493 0.3415369093 -0.8593671322 0.3425414264}
+ viewerProcess None
+ name Viewer1
+ xpos 1037
+ ypos 963
+}
+push $N7b15d000
+ColorMatrix {
+ matrix {
+     {{parent.Axis1.world_matrix.0} {parent.Axis1.world_matrix.1} {parent.Axis1.world_matrix.2}}
+     {{parent.Axis1.world_matrix.4} {parent.Axis1.world_matrix.5} {parent.Axis1.world_matrix.6}}
+     {{parent.Axis1.world_matrix.8} {parent.Axis1.world_matrix.9} {parent.Axis1.world_matrix.10}}
+   }
+ name ColorMatrix51
+ xpos -3905
+ ypos 892
+}
+push $N7b15d000
+PositionToPoints2 {
+ display textured
+ render_mode textured
+ P_channel rgb
+ detail 1
+ pointSize 1
+ name PositionToPoints1
+ xpos -3906
+ ypos 967
+}
+push $N7b2b0c00
 Dot {
  name Dot3
- xpos 845
- ypos 1074
+ xpos 842
+ ypos 1314
 }
-set Ne877fe0 [stack 0]
-Shuffle {
- alpha white
- name Shuffle17
- label "\[value in]"
- xpos 484
- ypos 1173
-}
-Blur {
- name Blur2
- xpos 484
- ypos 1209
-}
-set Nf18b100 [stack 0]
-push $Ne877fe0
-Expression {
- expr0 abs(r)
- expr1 abs(g)
- expr2 abs(b)
- name Expression29
- xpos 377
- ypos 1143
-}
-PositionToPoints2 {
- inputs 2
- display textured
- render_mode textured
- P_channel rgb
- detail 1
- pointSize 4
- name PositionToPoints7
- xpos 377
- ypos 1311
-}
-push $Nf18b100
-PositionToPoints2 {
- display textured
- render_mode textured
- P_channel rgb
- detail 1
- name PositionToPoints9
- xpos 484
- ypos 1311
-}
-push $Ne877fe0
+set N7b2b0800 [stack 0]
 Write {
- file CLF_testImagePrototype.exr
+ file images/CLF_testImagePrototype_v002.jpg
+ raw true
+ file_type jpeg
+ checkHashOnRead false
+ version 3
+ name Write2
+ selected true
+ xpos 973
+ ypos 1455
+ addUserKnob {20 caravr l CaraVR}
+ addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
+ addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
+}
+push $N7b2b0800
+Write {
+ file images/CLF_testImagePrototype_v002.exr
  raw true
  file_type exr
  first_part rgba
  checkHashOnRead false
- in_colorspace scene_linear
- out_colorspace scene_linear
+ version 1
  name Write1
- xpos 811
- ypos 1324
+ selected true
+ xpos 808
+ ypos 1450
  addUserKnob {20 caravr l CaraVR}
  addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
  addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
-}
-push $Ne877fe0
-Write {
- file CLF_testImagePrototype.####.jpg
- raw true
- file_type jpeg
- checkHashOnRead false
- version 2
- in_colorspace acescg
- out_colorspace acescg
- name Write2
- xpos 950
- ypos 1327
- addUserKnob {20 caravr l CaraVR}
- addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
- addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
-}
-push $Ne877fe0
-Viewer {
- frame_range 1-100
- colour_sample_bbox {0.9453125 -0.015625 0.947265625 -0.013671875}
- viewerProcess "Raw (P3-D60)"
- name Viewer1
- xpos 818
- ypos 993
 }
