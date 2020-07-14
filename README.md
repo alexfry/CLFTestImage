@@ -3,7 +3,7 @@
 
 Mostly a discussion point at the moment.
 
-![](images/CLF_testImagePrototype_v002.jpg)
+![](images/CLF_testImagePrototype_v005.jpg)
 
 The ramps and the bottom shown in 3D space.
 ![](images/fullRangeSpikeExample_v001.png)
