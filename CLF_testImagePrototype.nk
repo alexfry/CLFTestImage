@@ -1,20 +1,20 @@
-#! /Applications/Nuke12.1v1/Nuke12.1v1.app/Contents/MacOS/libnuke-12.1.1.dylib -nx
-version 12.1 v1
+#! /Applications/Nuke12.2v4/Nuke12.2v4.app/Contents/MacOS/libnuke-12.2.4.dylib -nx
+version 12.2 v4
 define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
-    <window x="0" y="23" w="1920" h="1080" maximized="1" screen="0">
+    <window x="0" y="25" w="3008" h="1558" maximized="1" screen="0">
         <splitter orientation="1">
             <split size="40"/>
             <dock id="" hideTitles="1" activePageId="Toolbar.1">
                 <page id="Toolbar.1"/>
             </dock>
-            <split size="1257" stretch="1"/>
+            <split size="2345" stretch="1"/>
             <splitter orientation="2">
-                <split size="622"/>
+                <split size="903"/>
                 <dock id="" activePageId="Viewer.1">
                     <page id="Viewer.1"/>
                 </dock>
-                <split size="438"/>
+                <split size="635"/>
                 <dock id="" activePageId="DAG.1" focus="true">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
@@ -32,7 +32,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 }
 Root {
  inputs 0
- name "/Users/alex/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/CLFTestImage/CLF_testImagePrototype.nk"
+ name /Users/afry/GitHub/CLFTestImage/CLF_testImagePrototype.nk
  project_directory "\[python \{nuke.script_directory()\}]"
  frame 88
  lock_range true
@@ -106,27 +106,6 @@ BackdropNode {
  ypos 3254
  bdwidth 99
  bdheight 214
-}
-BackdropNode {
- inputs 0
- name BackdropNode18
- tile_color 0x8e8e3800
- label "inf pixel"
- note_font_size 42
- xpos 3537
- ypos 2546
- bdwidth 99
- bdheight 153
-}
-BackdropNode {
- inputs 0
- name BackdropNode19
- tile_color 0xaaaaaa00
- label "nan pixel"
- note_font_size 42
- xpos 3544
- ypos 2730
- bdheight 143
 }
 BackdropNode {
  inputs 0
@@ -204,7 +183,7 @@ Reformat {
  xpos 3826
  ypos 692
 }
-set N3af4f400 [stack 0]
+set N33455c00 [stack 0]
 Expression {
  expr0 "x < 1280 ? min(1, max((640-x)/320, 0)) : min((x - 1280)/320, 1)"
  expr1 "x<1600 ? min((x-640)/320, 1) : max((1920-x)/320, 0)"
@@ -213,7 +192,7 @@ Expression {
  xpos 3662
  ypos 704
 }
-push $N3af4f400
+push $N33455c00
 Expression {
  expr0 "x < (width/3*2) ? min(1, max(((width/3)-x)/(width/6), 0)) : min((x - (width/3*2))/(width/6), 1)"
  expr1 "x<(width/6*5) ? min((x-(width/3))/(width/6), 1) : max((width-x)/(width/6), 0)"
@@ -222,7 +201,7 @@ Expression {
  xpos 3826
  ypos 763
 }
-set N3af4e800 [stack 0]
+set N33455000 [stack 0]
 Difference {
  inputs 2
  name Difference1
@@ -3696,7 +3675,7 @@ Group {
    ypos 826
   }
  end_group
-set N3b1c6580 [stack 0]
+set N61e50800 [stack 0]
  Group {
   inputs 0
   name ColorChecker1
@@ -5313,13 +5292,13 @@ set N3b1c6580 [stack 0]
    xpos 400
    ypos 231
   }
-set N3b02c800 [stack 0]
+set N618c6c00 [stack 0]
   Output {
    name Output
    xpos 400
    ypos 288
   }
-push $N3b02c800
+push $N618c6c00
   Viewer {
    frame_range 1-100
    name Viewer1
@@ -5334,8 +5313,8 @@ push $N3b02c800
   xpos 1148
   ypos -293
  }
- set C3b041180 [stack 0]
-push $N3b1c6580
+ set C618e0800 [stack 0]
+push $N61e50800
  Transform {
   translate {0 56}
   scale 0.97
@@ -5363,7 +5342,7 @@ push $N3b1c6580
    xpos 0
    ypos -150
   }
-set N3b06f800 [stack 0]
+set N618c5c00 [stack 0]
   Group {
    name XYZ_ICC_D50_to_sRGB
    xpos 8400
@@ -5404,7 +5383,7 @@ set N3b06f800 [stack 0]
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Xtreme_RGB
    xpos 7800
@@ -5445,7 +5424,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_V-Gamut
    xpos 7650
@@ -5486,7 +5465,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Sharp_RGB
    xpos 7500
@@ -5527,7 +5506,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_SMPTE_C
    xpos 7350
@@ -5568,7 +5547,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_SMPTE_240M
    xpos 7200
@@ -5609,7 +5588,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_S-Gamut3.Cine
    xpos 7050
@@ -5650,7 +5629,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_S-Gamut3
    xpos 6900
@@ -5691,7 +5670,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_S-Gamut
    xpos 6750
@@ -5732,7 +5711,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Russell_RGB
    xpos 6600
@@ -5773,7 +5752,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ROMM_RGB
    xpos 6450
@@ -5814,7 +5793,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_RIMM_RGB
    xpos 6300
@@ -5855,7 +5834,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_REDcolor4
    xpos 6150
@@ -5896,7 +5875,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_REDcolor3
    xpos 6000
@@ -5937,7 +5916,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_REDcolor2
    xpos 5850
@@ -5978,7 +5957,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_REDcolor
    xpos 5700
@@ -6019,7 +5998,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_REDWideGamutRGB
    xpos 5550
@@ -6060,7 +6039,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Protune_Native
    xpos 5400
@@ -6101,7 +6080,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ProPhoto_RGB
    xpos 5250
@@ -6142,7 +6121,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Pal/Secam
    xpos 5100
@@ -6183,7 +6162,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_P3-D65
    xpos 4950
@@ -6224,7 +6203,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_NTSC_(1987)
    xpos 4800
@@ -6265,7 +6244,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_NTSC_(1953)
    xpos 4650
@@ -6306,7 +6285,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Max_RGB
    xpos 4500
@@ -6347,7 +6326,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ITU-R_BT.709
    xpos 4350
@@ -6388,7 +6367,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ITU-R_BT.470_-_625
    xpos 4200
@@ -6429,7 +6408,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ITU-R_BT.470_-_525
    xpos 4050
@@ -6470,7 +6449,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ITU-R_BT.2020
    xpos 3900
@@ -6511,7 +6490,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_FilmLight_E-Gamut
    xpos 3750
@@ -6552,7 +6531,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_F-Gamut
    xpos 3600
@@ -6593,7 +6572,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Ekta_Space_PS_5
    xpos 3450
@@ -6634,7 +6613,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ERIMM_RGB
    xpos 3300
@@ -6675,7 +6654,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ECI_RGB_v2
    xpos 3150
@@ -6716,7 +6695,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Don_RGB_4
    xpos 3000
@@ -6757,7 +6736,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DRAGONcolor2
    xpos 2850
@@ -6798,7 +6777,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DRAGONcolor
    xpos 2700
@@ -6839,7 +6818,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DJI_D-Gamut
    xpos 2550
@@ -6880,7 +6859,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DCI-P3+
    xpos 2400
@@ -6921,7 +6900,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DCI-P3
    xpos 2250
@@ -6962,7 +6941,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_DCDM_XYZ
    xpos 2100
@@ -7003,7 +6982,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ColorMatch_RGB
    xpos 1950
@@ -7044,7 +7023,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Cinema_Gamut
    xpos 1800
@@ -7085,7 +7064,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_CIE_RGB
    xpos 1650
@@ -7126,7 +7105,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Beta_RGB
    xpos 1500
@@ -7167,7 +7146,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Best_RGB
    xpos 1350
@@ -7208,7 +7187,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Apple_RGB
    xpos 1200
@@ -7249,7 +7228,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Adobe_Wide_Gamut_RGB
    xpos 1050
@@ -7290,7 +7269,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_Adobe_RGB_(1998)
    xpos 900
@@ -7331,7 +7310,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ALEXA_Wide_Gamut
    xpos 750
@@ -7372,7 +7351,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ACESproxy
    xpos 600
@@ -7413,7 +7392,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ACEScg
    xpos 450
@@ -7454,7 +7433,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ACEScct
    xpos 300
@@ -7495,7 +7474,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ACEScc
    xpos 150
@@ -7537,7 +7516,7 @@ push $N3b06f800
     ypos -75
    }
   end_group
-push $N3b06f800
+push $N618c5c00
   Group {
    name XYZ_ICC_D50_to_ACES2065-1
    xpos 0
@@ -7594,7 +7573,7 @@ push $N3b06f800
    ypos 335
   }
  end_group
-set N3b022c00 [stack 0]
+set N618e0100 [stack 0]
  Constant {
   inputs 0
   color {0.015 0.015 0.015 1}
@@ -7619,7 +7598,7 @@ set N3b022c00 [stack 0]
   ypos -149
   disable true
  }
-set N5e32c400 [stack 0]
+set N63062c00 [stack 0]
  Text {
   opacity {{parent.title_opacity_Floating_Point_Slider}}
   message "\[value XYZ_ICC_D50_to_RGB.colourspace_Pulldown_Choice] - X-Rite ColorChecker Classic 2014"
@@ -7636,7 +7615,7 @@ set N5e32c400 [stack 0]
   xpos 1278
   ypos -134
  }
-push $N5e32c400
+push $N63062c00
  Text {
   opacity {{parent.title_opacity_Floating_Point_Slider}}
   message "\[value XYZ_ICC_D50_to_RGB.colourspace_Pulldown_Choice] - X-Rite ColorChecker Classic 2005"
@@ -7653,13 +7632,13 @@ push $N5e32c400
   xpos 1057
   ypos -137
  }
-clone $C3b041180 {
+clone $C618e0800 {
   inputs 2
   xpos 1110
   ypos -74
   selected false
  }
-push $N3b022c00
+push $N618e0100
  Output {
   name Output
   xpos 1178
@@ -7722,7 +7701,7 @@ Group {
   ypos 328
  }
 end_group
-set N5e308c00 [stack 0]
+set N63074800 [stack 0]
 Transform {
  translate {846 356}
  center {90 60}
@@ -7747,7 +7726,7 @@ Expression {
  xpos 3553
  ypos 3034
 }
-set N5e38c400 [stack 0]
+set N63016800 [stack 0]
 Colorspace {
  colorspace_in st2084
  name Colorspace5
@@ -7760,35 +7739,35 @@ Multiply {
  xpos 3940
  ypos 3129
 }
-push $N5e38c400
+push $N63016800
 Colorspace {
  colorspace_in 2.60
  name Colorspace3
  xpos 3846
  ypos 3107
 }
-push $N5e38c400
+push $N63016800
 Colorspace {
  colorspace_in 2.40
  name Colorspace2
  xpos 3759
  ypos 3106
 }
-push $N5e38c400
+push $N63016800
 Colorspace {
  colorspace_in 2.20
  name Colorspace4
  xpos 3675
  ypos 3107
 }
-push $N5e38c400
+push $N63016800
 Colorspace {
  colorspace_in sRGB
  name Colorspace1
  xpos 3593
  ypos 3108
 }
-push $N5e38c400
+push $N63016800
 ContactSheet {
  inputs 6
  width {{input.width*columns}}
@@ -7855,41 +7834,13 @@ Group {
   ypos 328
  }
 end_group
-set N5e308680 [stack 0]
+set N62fb3900 [stack 0]
 Transform {
  translate {0 327}
  center {512 12}
  name Transform40
  xpos 3094
  ypos 3216
-}
-Rectangle {
- inputs 0
- area {1 0 2 1}
- name Rectangle2
- xpos 3554
- ypos 2810
-}
-Expression {
- channel0 rgb
- expr0 r==1?nan:r
- name Expression55
- xpos 3554
- ypos 2845
-}
-Rectangle {
- inputs 0
- area {0 0 1 1}
- name Rectangle1
- xpos 3547
- ypos 2626
-}
-Expression {
- channel0 rgb
- expr0 r==1?inf:r
- name Expression54
- xpos 3547
- ypos 2650
 }
 Reformat {
  inputs 0
@@ -7930,7 +7881,7 @@ Add {
  xpos 3557
  ypos 2210
 }
-set N5e426400 [stack 0]
+set N62fa4400 [stack 0]
 Expression {
  channel0 {rgba.red -rgba.green -rgba.blue rgba.alpha}
  expr0 "  r>0 ? pow(2,int(r/(1/30))-14)*(1+(((r/(1/30))-int(r/(1/30)))*1023/1024))  :  -(pow(2,int(-r/(1/30))-14)*(1+(((-r/(1/30))-int(-r/(1/30)))*1023/1024)))"
@@ -7940,8 +7891,8 @@ Expression {
  xpos 3607
  ypos 2282
 }
-set N5e426000 [stack 0]
-push $N5e426400
+set N62f37c00 [stack 0]
+push $N62fa4400
 ContactSheet {
  inputs 2
  width {{input.width*columns}}
@@ -8007,7 +7958,7 @@ Group {
   ypos 328
  }
 end_group
-set N5e308100 [stack 0]
+set N62f80800 [stack 0]
 Transform {
  translate {0 359}
  center {1024 465}
@@ -8054,7 +8005,7 @@ Dot {
  xpos 3598
  ypos 1382
 }
-set N5dd3ec00 [stack 0]
+set N62ed3c00 [stack 0]
 Multiply {
  channels rgb
  value {0.3176113665 0.4624634385 0.4173440635 1}
@@ -8063,7 +8014,7 @@ Multiply {
  ypos 1558
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.2573201954 0.2349507809 0.3972248733 1}
@@ -8072,7 +8023,7 @@ Multiply {
  ypos 1562
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.1130693108 0.1367826313 0.06378077716 1}
@@ -8081,7 +8032,7 @@ Multiply {
  ypos 1559
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.1766801476 0.1951231211 0.3081207275 1}
@@ -8090,7 +8041,7 @@ Multiply {
  ypos 1558
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.3898182213 0.2963214219 0.2250837982 1}
@@ -8099,7 +8050,7 @@ Multiply {
  ypos 1560
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.1159211472 0.08478414267 0.05811815336 1}
@@ -8108,7 +8059,7 @@ Multiply {
  ypos 1561
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.4793882072 0.3617573082 0.07428025454 1}
@@ -8117,7 +8068,7 @@ Multiply {
  ypos 1555
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.3435645401 0.4374379814 0.1022445858 1}
@@ -8126,7 +8077,7 @@ Multiply {
  ypos 1558
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.08876467496 0.05758350715 0.1260961145 1}
@@ -8135,7 +8086,7 @@ Multiply {
  ypos 1558
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.2975813448 0.126886934 0.1184190363 1}
@@ -8144,7 +8095,7 @@ Multiply {
  ypos 1554
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.1337712556 0.1257288307 0.3475194573 1}
@@ -8153,7 +8104,7 @@ Multiply {
  ypos 1557
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.4106669426 0.2341501713 0.06329762936 1}
@@ -8162,7 +8113,7 @@ Multiply {
  ypos 1557
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.1371643692 0.2228036225 0.3524451852 1}
@@ -8171,7 +8122,7 @@ Multiply {
  ypos 1556
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.3113179207 0.1388893276 0.2681293786 1}
@@ -8180,7 +8131,7 @@ Multiply {
  ypos 1559
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.5901320577 0.5420570374 0.08785644174 1}
@@ -8189,7 +8140,7 @@ Multiply {
  ypos 1563
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.2175102085 0.07380437106 0.04730290547 1}
@@ -8198,7 +8149,7 @@ Multiply {
  ypos 1563
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.142530188 0.2469816357 0.08881090581 1}
@@ -8207,7 +8158,7 @@ Multiply {
  ypos 1566
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Multiply {
  channels rgb
  value {0.07816392183 0.06856679171 0.2510695159 1}
@@ -8216,7 +8167,7 @@ Multiply {
  ypos 1569
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  blue black
  alpha black
@@ -8226,7 +8177,7 @@ Shuffle {
  ypos 1557
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  green black
  alpha black
@@ -8236,7 +8187,7 @@ Shuffle {
  ypos 1556
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  red black
  alpha black
@@ -8246,7 +8197,7 @@ Shuffle {
  ypos 1556
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  red black
  green black
@@ -8257,7 +8208,7 @@ Shuffle {
  ypos 1559
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  red black
  blue black
@@ -8268,7 +8219,7 @@ Shuffle {
  ypos 1556
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 Shuffle {
  green black
  blue black
@@ -8279,7 +8230,7 @@ Shuffle {
  ypos 1554
  postage_stamp true
 }
-push $N5dd3ec00
+push $N62ed3c00
 ContactSheet {
  inputs 25
  width {{input.width*columns}}
@@ -8367,7 +8318,7 @@ Group {
   ypos 328
  }
 end_group
-set N25020b00 [stack 0]
+set N62e0b200 [stack 0]
 Transform {
  translate {0 225}
  center {512 200}
@@ -8375,13 +8326,13 @@ Transform {
  xpos 2992
  ypos 1887
 }
-push $N3af4f400
+push $N33455c00
 Dot {
  name Dot6
  xpos 4883
  ypos 778
 }
-set N5e48b400 [stack 0]
+set N62df2400 [stack 0]
 Expression {
  expr0 "min(1, x/(width/2))"
  expr1 "x < (width/2) ? min(1, x/width) : 0.5 + (x-(width/2))/width"
@@ -8396,7 +8347,7 @@ Transform {
  xpos 5884
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "min(1, x/(width/2))"
  expr1 "min(1, x/(width/2))"
@@ -8412,7 +8363,7 @@ Transform {
  xpos 5789
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? min(1, x/width) : 0.5 + (x-(width/2))/width"
  expr1 "min(1, x/(width/2))"
@@ -8428,7 +8379,7 @@ Transform {
  xpos 5696
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
  expr1 "min(1, x/(width/2))"
@@ -8444,7 +8395,7 @@ Transform {
  xpos 5600
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
  expr1 "min(1, x/(width/2))"
@@ -8460,7 +8411,7 @@ Transform {
  xpos 5503
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
  expr1 "min(1, x/(width/2))"
@@ -8476,7 +8427,7 @@ Transform {
  xpos 5410
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
  expr1 "x < (width/2) ? min(1, x/width) : 0.5 + (x-(width/2))/width"
@@ -8492,7 +8443,7 @@ Transform {
  xpos 5315
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
  expr1 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
@@ -8508,7 +8459,7 @@ Transform {
  xpos 5221
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "x < (width/2) ? min(1, x/width) : 0.5 + (x-(width/2))/width"
  expr1 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
@@ -8524,7 +8475,7 @@ Transform {
  xpos 5127
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "min(1, x/(width/2))"
  expr1 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
@@ -8540,7 +8491,7 @@ Transform {
  xpos 5029
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "min(1, x/(width/2))"
  expr1 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
@@ -8556,7 +8507,7 @@ Transform {
  xpos 4938
  ypos 843
 }
-push $N5e48b400
+push $N62df2400
 Expression {
  expr0 "min(1, x/(width/2))"
  expr1 "x < (width/2) ? 0 : (x-(width/2))/(width/2)"
@@ -8572,7 +8523,7 @@ Transform {
  xpos 4849
  ypos 844
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0 0.1}
  name Histogram7
@@ -8586,7 +8537,7 @@ Transform {
  xpos 4739
  ypos 848
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0 0.3}
  name Histogram8
@@ -8600,7 +8551,7 @@ Transform {
  xpos 4647
  ypos 846
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0 0.5}
  name Histogram9
@@ -8614,7 +8565,7 @@ Transform {
  xpos 4554
  ypos 844
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0 0.7}
  name Histogram10
@@ -8628,7 +8579,7 @@ Transform {
  xpos 4461
  ypos 842
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0 0.9}
  name Histogram11
@@ -8642,7 +8593,7 @@ Transform {
  xpos 4367
  ypos 847
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  name Histogram12
  xpos 4276
@@ -8655,7 +8606,7 @@ Transform {
  xpos 4276
  ypos 846
 }
-push $N3af4f400
+push $N33455c00
 Ramp {
  p0 {0 0}
  p1 {1023 0}
@@ -8670,7 +8621,7 @@ Transform {
  xpos 4170
  ypos 850
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0.4 0.6}
  name Histogram5
@@ -8684,7 +8635,7 @@ Transform {
  xpos 4078
  ypos 846
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0.3 0.7}
  name Histogram4
@@ -8698,7 +8649,7 @@ Transform {
  xpos 3985
  ypos 844
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0.2 0.8}
  name Histogram3
@@ -8712,7 +8663,7 @@ Transform {
  xpos 3892
  ypos 846
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  out {0.1 0.9}
  name Histogram2
@@ -8726,7 +8677,7 @@ Transform {
  xpos 3798
  ypos 847
 }
-push $N3af4e800
+push $N33455000
 Histogram {
  name Histogram1
  xpos 3707
@@ -8739,7 +8690,7 @@ Transform {
  xpos 3707
  ypos 846
 }
-push $N3af4f400
+push $N33455c00
 Reformat {
  type "to box"
  box_width {{input.width}}
@@ -8955,7 +8906,7 @@ Group {
   ypos 328
  }
 end_group
-set N5e307b80 [stack 0]
+set N62dde400 [stack 0]
 Transform {
  translate {0 103}
  center {512 12}
@@ -9011,7 +8962,7 @@ Shuffle {
  xpos 3578
  ypos -204
 }
-set N5e6e8800 [stack 0]
+set N63232000 [stack 0]
 Expression {
  expr0 0
  expr1 cx*65503
@@ -9020,7 +8971,7 @@ Expression {
  xpos 9039
  ypos 210
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 0
  expr1 cx*65503
@@ -9029,7 +8980,7 @@ Expression {
  xpos 8948
  ypos 210
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 cx*65503
@@ -9038,7 +8989,7 @@ Expression {
  xpos 8841
  ypos 210
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 cx*65503
@@ -9047,7 +8998,7 @@ Expression {
  xpos 8741
  ypos 208
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 0
@@ -9056,7 +9007,7 @@ Expression {
  xpos 8632
  ypos 204
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 0
@@ -9065,7 +9016,7 @@ Expression {
  xpos 8546
  ypos 200
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 -65503
@@ -9074,7 +9025,7 @@ Expression {
  xpos 8422
  ypos 196
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 65503
@@ -9083,7 +9034,7 @@ Expression {
  xpos 8332
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 0
@@ -9092,7 +9043,7 @@ Expression {
  xpos 8213
  ypos 196
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 0
@@ -9101,7 +9052,7 @@ Expression {
  xpos 8115
  ypos 192
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 0
  expr1 -65503
@@ -9110,7 +9061,7 @@ Expression {
  xpos 8016
  ypos 191
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 0
  expr1 65503
@@ -9119,7 +9070,7 @@ Expression {
  xpos 7902
  ypos 194
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 cx*65503
@@ -9128,7 +9079,7 @@ Expression {
  xpos 7772
  ypos 191
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 cx*65503
@@ -9137,7 +9088,7 @@ Expression {
  xpos 7666
  ypos 191
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 cx*65503
@@ -9146,7 +9097,7 @@ Expression {
  xpos 7565
  ypos 195
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 cx*65503
@@ -9155,7 +9106,7 @@ Expression {
  xpos 7459
  ypos 195
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 -65503
@@ -9164,7 +9115,7 @@ Expression {
  xpos 7345
  ypos 190
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 65503
@@ -9173,7 +9124,7 @@ Expression {
  xpos 7248
  ypos 188
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 -65503
@@ -9182,7 +9133,7 @@ Expression {
  xpos 7131
  ypos 190
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 cx*65503
  expr1 65503
@@ -9191,7 +9142,7 @@ Expression {
  xpos 7034
  ypos 188
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 -65503
@@ -9200,7 +9151,7 @@ Expression {
  xpos 6914
  ypos 184
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 -65503
@@ -9209,7 +9160,7 @@ Expression {
  xpos 6798
  ypos 187
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 -65503
  expr1 65503
@@ -9218,7 +9169,7 @@ Expression {
  xpos 6679
  ypos 185
 }
-push $N5e6e8800
+push $N63232000
 Expression {
  expr0 65503
  expr1 65503
@@ -9227,7 +9178,7 @@ Expression {
  xpos 6567
  ypos 183
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9238,7 +9189,7 @@ ColorMatrix {
  xpos 6378
  ypos 183
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9249,7 +9200,7 @@ ColorMatrix {
  xpos 6268
  ypos 183
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9260,7 +9211,7 @@ ColorMatrix {
  xpos 6158
  ypos 186
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9271,7 +9222,7 @@ ColorMatrix {
  xpos 5986
  ypos 191
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9282,7 +9233,7 @@ ColorMatrix {
  xpos 5874
  ypos 193
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9293,7 +9244,7 @@ ColorMatrix {
  xpos 5771
  ypos 194
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9304,7 +9255,7 @@ ColorMatrix {
  xpos 5613
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9315,7 +9266,7 @@ ColorMatrix {
  xpos 5517
  ypos 194
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9326,7 +9277,7 @@ ColorMatrix {
  xpos 5423
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9337,7 +9288,7 @@ ColorMatrix {
  xpos 5249
  ypos 198
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9348,7 +9299,7 @@ ColorMatrix {
  xpos 5148
  ypos 198
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9359,7 +9310,7 @@ ColorMatrix {
  xpos 5054
  ypos 200
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9370,7 +9321,7 @@ ColorMatrix {
  xpos 4916
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9381,7 +9332,7 @@ ColorMatrix {
  xpos 4811
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9392,7 +9343,7 @@ ColorMatrix {
  xpos 4700
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9403,7 +9354,7 @@ ColorMatrix {
  xpos 4577
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9414,7 +9365,7 @@ ColorMatrix {
  xpos 4480
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9425,7 +9376,7 @@ ColorMatrix {
  xpos 4379
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9436,7 +9387,7 @@ ColorMatrix {
  xpos 4257
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9447,7 +9398,7 @@ ColorMatrix {
  xpos 4152
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9458,7 +9409,7 @@ ColorMatrix {
  xpos 4042
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9469,7 +9420,7 @@ ColorMatrix {
  xpos 3925
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {0 0 0}
@@ -9480,7 +9431,7 @@ ColorMatrix {
  xpos 3832
  ypos 197
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {1 0 0}
@@ -9491,7 +9442,7 @@ ColorMatrix {
  xpos 3733
  ypos 198
 }
-push $N5e6e8800
+push $N63232000
 ColorMatrix {
  matrix {
      {-1 0 0}
@@ -9503,7 +9454,7 @@ ColorMatrix {
  xpos 3634
  ypos 188
 }
-push $N5e6e8800
+push $N63232000
 ContactSheet {
  inputs 50
  width {{input.width*columns}}
@@ -9577,7 +9528,7 @@ Group {
   ypos 328
  }
 end_group
-set N5e307600 [stack 0]
+set N63261600 [stack 0]
 Transform {
  translate {0 1}
  center {512 25}
@@ -9618,18 +9569,6 @@ Merge2 {
 }
 Merge2 {
  inputs 2
- name Merge37
- xpos 2855
- ypos 2677
-}
-Merge2 {
- inputs 2
- name Merge38
- xpos 2855
- ypos 2845
-}
-Merge2 {
- inputs 2
  name Merge41
  xpos 2855
  ypos 3216
@@ -9663,16 +9602,14 @@ Dot {
  xpos 2889
  ypos 3690
 }
-set N57484400 [stack 0]
+set N649da800 [stack 0]
 Write {
- file images/CLF_testImagePrototype_v006.exr
+ file images/CLF_testImagePrototype_v007.exr
  raw true
  file_type exr
  first_part rgba
  checkHashOnRead false
- version 8
- in_colorspace scene_linear
- out_colorspace scene_linear
+ version 9
  name Write1
  xpos 2855
  ypos 3832
@@ -9680,15 +9617,13 @@ Write {
  addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
  addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
 }
-push $N57484400
+push $N649da800
 Write {
- file images/CLF_testImagePrototype_v006.jpg
+ file images/CLF_testImagePrototype_v007.jpg
  raw true
  file_type jpeg
  checkHashOnRead false
- version 11
- in_colorspace scene_linear
- out_colorspace scene_linear
+ version 12
  name Write2
  xpos 3019
  ypos 3830
@@ -9696,39 +9631,7 @@ Write {
  addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
  addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
 }
-push $N57484400
-Write {
- file images/CLF_testImagePrototype_sRGB_v006.jpg
- colorspace "Output - sRGB"
- file_type jpeg
- checkHashOnRead false
- version 12
- in_colorspace scene_linear
- out_colorspace scene_linear
- name Write3
- xpos 3216
- ypos 3831
- addUserKnob {20 caravr l CaraVR}
- addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
- addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
-}
-push $N57484400
-Write {
- file images/CLF_docImage_v006.jpg
- colorspace "Output - sRGB"
- file_type jpeg
- checkHashOnRead false
- version 13
- in_colorspace scene_linear
- out_colorspace scene_linear
- name Write4
- xpos 3430
- ypos 3830
- addUserKnob {20 caravr l CaraVR}
- addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
- addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
-}
-push $N5e426000
+push $N62f37c00
 Shuffle2 {
  fromInput1 {{0} B}
  fromInput2 {{0} B}
@@ -9746,7 +9649,7 @@ PositionToPoints2 {
  xpos 3878
  ypos 2282
 }
-push $N25020b00
+push $N62e0b200
 Shuffle2 {
  fromInput1 {{0} B}
  fromInput2 {{0} B}
@@ -9763,7 +9666,7 @@ PositionToPoints2 {
  xpos 3711
  ypos 1918
 }
-push $N5e307600
+push $N63261600
 PositionToPoints2 {
  display textured
  render_mode textured
@@ -9774,7 +9677,7 @@ PositionToPoints2 {
  xpos 3741
  ypos 572
 }
-push $N25020b00
+push $N62e0b200
 Transform {
  translate {1760 0}
  center {112 512}
@@ -9783,78 +9686,118 @@ Transform {
  xpos 3564
  ypos 1975
 }
-push $N25020b00
-Viewer {
- frame_range 1-100
- colour_sample_bbox {-0.03125 -0.560546875 -0.029296875 -0.55859375}
- viewerProcess "Raw (ACES)"
- name Viewer1
- xpos 3583
- ypos 612
-}
-push $N25020b00
+push $N62e0b200
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 1
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write5
  xpos 3741
  ypos 1957
 }
-push $N5e307b80
+push $N62dde400
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 2
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write6
  xpos 3735
  ypos 981
 }
-push $N5e307600
+push $N63261600
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write7
  xpos 3842
  ypos 527
 }
-push $N5e308100
+push $N62f80800
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write8
  xpos 3740
  ypos 2359
 }
-push $N5e308680
+push $N62fb3900
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write9
  xpos 3717
  ypos 3207
 }
-push $N5e308c00
+push $N649da800
+Viewer {
+ frame_range 1-100
+ colour_sample_bbox {0.998046875 -1 1 -0.998046875}
+ viewerProcess "Raw (ACES)"
+ name Viewer1
+ xpos 3583
+ ypos 612
+}
+push $N63074800
 Write {
  file "images/documentation/isolatedSection_\[python nuke.thisNode().input(0).knob('message').getValue().replace(' ','_')].png"
  raw true
  file_type png
  checkHashOnRead false
  version 3
+ in_colorspace scene_linear
+ out_colorspace scene_linear
  name Write10
  xpos 3691
  ypos 3426
+}
+push $N649da800
+Write {
+ file images/CLF_testImagePrototype_sRGB_v007.jpg
+ colorspace "Output - sRGB"
+ file_type jpeg
+ checkHashOnRead false
+ version 13
+ name Write3
+ xpos 3216
+ ypos 3831
+ addUserKnob {20 caravr l CaraVR}
+ addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
+ addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
+}
+push $N649da800
+Write {
+ file images/CLF_docImage_v007.jpg
+ colorspace "Output - sRGB"
+ file_type jpeg
+ checkHashOnRead false
+ version 14
+ name Write4
+ xpos 3430
+ ypos 3830
+ addUserKnob {20 caravr l CaraVR}
+ addUserKnob {4 viewPresets l "View Presets" M {main stereo cams "stereo cams" all}}
+ addUserKnob {22 set l Set -STARTLINE T "w = nuke.thisNode()\nscriptViews = nuke.views()\nviewPreset = w\['viewPresets'].getValue()\nselectedViews = None\nif viewPreset == 0:\n  selectedViews = \['main']\nif viewPreset == 1:\n  stereoViews = \['left', 'right']\n  if set(stereoViews).issubset(set(scriptViews)):\n    selectedViews = stereoViews\n  else:\n    selectedViews = None\nelif viewPreset == 2:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and not ('_left' in v or '_right' in v)]\nelif viewPreset == 3:\n  selectedViews = \[v for v in scriptViews if 'cam' in v and ('_left' in v or '_right' in v)]\nelif viewPreset == 4:\n  selectedViews = scriptViews\nif selectedViews:\n  w\['views'].fromScript(' '.join(selectedViews))\n"}
 }

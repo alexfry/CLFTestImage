@@ -3,7 +3,7 @@
 
 Mostly a discussion point at the moment.
 
-![](images/CLF_testImagePrototype_v006.jpg)
+![](images/CLF_testImagePrototype_v007.jpg)
 
 The ramps and the bottom shown in 3D space.
 ![](images/fullRangeSpikeExample_v001.png)
@@ -20,6 +20,9 @@ Since the fist CLF inmplementation meeting, a number of features have been added
 * Selection of easy to sample patch squares W,R,G,B,C,M,Y,inf,-inf,nan,0,65504. (should probably be expanded on).
 
 
+# 15 Sep 2021
+
+Removed NaN and Inf example Pixels from bottom left.
 
 # 25 Aug 2020
 
@@ -29,7 +32,7 @@ General script tidy up, not functional changes.
 
 # Description:
 
-![](images/CLF_docImage_v006.jpg)
+![](images/CLF_docImage_v007.jpg)
 
 ## Creations date
 This section is simply a data stamp to make it easier to diferentiate versions of the image created at different times.
@@ -91,8 +94,3 @@ This section of ramps is designed to produce a bounding box around all possible 
 ![](images/documentation/isolatedSection_extents_latice.png)
 
 ![](images/extentsCubeVis.png)
-
-## Inf & NaN pixels
-
-The pixel in the bottom left of the image (x=0, y=0) contains an inf value.
-The adjecent pixel (x=1, y=0) contains a Nan value
