@@ -3,7 +3,7 @@
 
 Mostly a discussion point at the moment.
 
-![](images/CLF_testImagePrototype_v007.jpg)
+![](images/CLF_testImagePrototype_v008.jpg)
 
 The ramps and the bottom shown in 3D space.
 ![](images/fullRangeSpikeExample_v001.png)
@@ -32,7 +32,7 @@ General script tidy up, not functional changes.
 
 # Description:
 
-![](images/CLF_docImage_v007.jpg)
+![](images/CLF_docImage_v008.jpg)
 
 ## Creations date
 This section is simply a data stamp to make it easier to diferentiate versions of the image created at different times.
